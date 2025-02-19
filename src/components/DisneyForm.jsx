@@ -104,12 +104,22 @@ const DisneyForm = () => {
         }));
     }
 
+
+    // funzione che avdrà a gestire l'intero form con tutte le info relative
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        // prendimi dvdDIsney allo suo stato precedente e ritornami un nuovo array con tutto il contenuto che c'era nell'array precedente aggiungendo un nuovo oggetto
+        setdvdDisney((currentDisney) => [...currentDisney, { id: currentDisney[currentDisney.length - 1].id + 1, ...formData }]);
+
+    }
+
     return (
         <>
             <h1>Blog Dvd Disney</h1>
 
             {/* sezione in cui si gestirà il form delle informazioni */}
-            <form id='form'>
+            <form id='form' onSubmit={handleSubmit}>
                 {/* input per inserimento titolo */}
                 <input
                     type="text"
