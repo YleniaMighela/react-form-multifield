@@ -112,6 +112,10 @@ const DisneyForm = () => {
         // prendimi dvdDIsney allo suo stato precedente e ritornami un nuovo array con tutto il contenuto che c'era nell'array precedente aggiungendo un nuovo oggetto
         setdvdDisney((currentDisney) => [...currentDisney, { id: currentDisney[currentDisney.length - 1].id + 1, ...formData }]);
 
+        // reset del form
+
+        setFormData(initialFormData)
+
     }
 
     return (
