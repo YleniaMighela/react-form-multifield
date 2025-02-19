@@ -74,17 +74,75 @@ const initialDisneyData = [
     }
 ];
 
+// mi creo una variabile di stato(oggetto) in cui si andranno a mappare le proprietà selezionate
+
+const initialFormData = {
+    titolo: "",
+    autore: "",
+    contenuto: "",
+    categoria: "",
+
+};
+
 const DisneyForm = () => {
 
     // utilizzo dello useState per la gestione dei dati ( l'array con gli oggetti)
     const [dvdDisney, setdvdDisney] = useState(initialDisneyData);
 
 
+    // utilizzo lo useState per la gestione delle informazioni raccolte dai campi del form
+    const [formData, setFormData] = useState(initialFormData);
+
     return (
         <>
             <h1>Blog Dvd Disney</h1>
 
+            {/* sezione in cui si gestirà il form delle informazioni */}
+            <form id='form'>
+                {/* input per inserimento titolo */}
+                <input
+                    type="text"
+                    titolo="titolo"
+                    // onChange={handleFormData}
+                    value={formData.titolo}
+                    placeholder='Nome Dvd'
+                />
 
+                {/* input per inserimento autore */}
+                <input
+                    type="text"
+                    titolo="autore"
+                    // onChange={handleFormData}
+                    value={formData.autore}
+                    placeholder='Nome autore'
+                />
+
+                {/* input per inserimento contenuto */}
+                <textarea
+                    titolo="contenuto"
+                    // onChange={handleFormData}
+                    value={formData.contenuto}
+                    placeholder='Descrizione dvd'
+                />
+
+                {/* input per inserimento categoria */}
+                <input
+                    type="text"
+                    titolo="categoria"
+                    // onChange={handleFormData}
+                    value={formData.categoria}
+                    placeholder='Categoria'
+                />
+
+
+            </form>
+
+
+
+
+
+
+            {/* itero sull'ray per estrapolare le proprietà che mi servono */}
             {dvdDisney.map((dvd) => (
                 <div className='container' key={dvd.id}>
                     <h2>{dvd.titolo}</h2>
