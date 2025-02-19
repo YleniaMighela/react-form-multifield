@@ -1,12 +1,13 @@
-import { useState } from 'react'
+
 // import './App.css'
+import DisneyForm from "./components/DisneyForm.jsx";
 
 function App() {
 
 
   return (
     <>
-      <h1>Qui andrà il contenuto dell'esercizio</h1>
+      <DisneyForm />
     </>
   )
 }
