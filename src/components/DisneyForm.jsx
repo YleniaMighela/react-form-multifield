@@ -81,6 +81,7 @@ const initialFormData = {
     autore: "",
     contenuto: "",
     categoria: "",
+    available: false,
 
 };
 
@@ -97,10 +98,13 @@ const DisneyForm = () => {
 
     // funzione che andrà a gestire le informazioni dei campi
     function handleFormData(e) {
+        // gestione del value a seconda del tipo di input
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+
         // inquesto momento currentFormaData prende tutti l'oggetto precedente, ma al momento dell'onChange lo modifica con i nuovi dati inseriti
         setFormData((currentformData) => ({
             ...currentformData,
-            [e.target.name]: e.target.value,
+            [e.target.name]: value,
         }));
     }
 
@@ -158,6 +162,17 @@ const DisneyForm = () => {
                     value={formData.categoria}
                     placeholder='Categoria'
                 />
+
+                {/* checkbox */}
+                <label htmlFor="available">Pubblicato</label>
+                <input
+                    type="checkbox"
+                    name="available"
+                    checked={formData.available}
+                    onChange={handleFormData}
+                    id="available"
+                />
+
 
                 {/* bottone di invio dei dati */}
                 <button>Invia</button>
