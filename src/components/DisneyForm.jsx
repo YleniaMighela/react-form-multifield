@@ -76,9 +76,26 @@ const initialDisneyData = [
 
 const DisneyForm = () => {
 
-    return (
+    // utilizzo dello useState per la gestione dei dati ( l'array con gli oggetti)
+    const [dvdDisney, setdvdDisney] = useState(initialDisneyData);
 
-        <h1>Blog Dvd Disney</h1>
+
+    return (
+        <>
+            <h1>Blog Dvd Disney</h1>
+
+
+            {dvdDisney.map((dvd) => (
+                <div className='container' key={dvd.id}>
+                    <h2>{dvd.titolo}</h2>
+                    <span>{dvd.autore}</span>
+                    <p>{dvd.contenuto}</p>
+                    <span>{dvd.categoria}</span>
+                </div>
+            ))
+            }
+        </>
+
 
 
     )
