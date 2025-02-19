@@ -97,76 +97,81 @@ const DisneyForm = () => {
 
     // funzione che andrà a gestire le informazioni dei campi
     function handleFormData(e) {
-
-
-        return (
-            <>
-                <h1>Blog Dvd Disney</h1>
-
-                {/* sezione in cui si gestirà il form delle informazioni */}
-                <form id='form'>
-                    {/* input per inserimento titolo */}
-                    <input
-                        type="text"
-                        name="titolo"
-                        onChange={handleFormData}
-                        value={formData.titolo}
-                        placeholder='Titolo del Dvd'
-                    />
-
-                    {/* input per inserimento autore */}
-                    <input
-                        type="text"
-                        name="autore"
-                        onChange={handleFormData}
-                        value={formData.autore}
-                        placeholder='Nome autore'
-                    />
-
-                    {/* input per inserimento contenuto */}
-                    <textarea
-                        name="contenuto"
-                        onChange={handleFormData}
-                        value={formData.contenuto}
-                        placeholder='Descrizione dvd'
-                    />
-
-                    {/* input per inserimento categoria */}
-                    <input
-                        type="text"
-                        name="categoria"
-                        onChange={handleFormData}
-                        value={formData.categoria}
-                        placeholder='Categoria'
-                    />
-
-                    {/* bottone di invio dei dati */}
-                    <button>Invia</button>
-
-                </form>
-
-
-
-
-
-
-                {/* itero sull'ray per estrapolare le proprietà che mi servono */}
-                {dvdDisney.map((dvd) => (
-                    <div className='container' key={dvd.id}>
-                        <h2>{dvd.titolo}</h2>
-                        <span>{dvd.autore}</span>
-                        <p>{dvd.contenuto}</p>
-                        <span>{dvd.categoria}</span>
-                    </div>
-                ))
-                }
-            </>
-
-
-
-        )
+        // inquesto momento currentFormaData prende tutti l'oggetto precedente, ma al momento dell'onChange lo modifica con i nuovi dati inseriti
+        setFormData((currentformData) => ({
+            ...currentformData,
+            [e.target.name]: e.target.value,
+        }));
     }
 
+    return (
+        <>
+            <h1>Blog Dvd Disney</h1>
+
+            {/* sezione in cui si gestirà il form delle informazioni */}
+            <form id='form'>
+                {/* input per inserimento titolo */}
+                <input
+                    type="text"
+                    name="titolo"
+                    onChange={handleFormData}
+                    value={formData.titolo}
+                    placeholder='Titolo del Dvd'
+                />
+
+                {/* input per inserimento autore */}
+                <input
+                    type="text"
+                    name="autore"
+                    onChange={handleFormData}
+                    value={formData.autore}
+                    placeholder='Nome autore'
+                />
+
+                {/* input per inserimento contenuto */}
+                <textarea
+                    name="contenuto"
+                    onChange={handleFormData}
+                    value={formData.contenuto}
+                    placeholder='Descrizione dvd'
+                />
+
+                {/* input per inserimento categoria */}
+                <input
+                    type="text"
+                    name="categoria"
+                    onChange={handleFormData}
+                    value={formData.categoria}
+                    placeholder='Categoria'
+                />
+
+                {/* bottone di invio dei dati */}
+                <button>Invia</button>
+
+            </form>
 
 
-    export default DisneyForm
+
+
+
+
+            {/* itero sull'ray per estrapolare le proprietà che mi servono */}
+            {dvdDisney.map((dvd) => (
+                <div className='container' key={dvd.id}>
+                    <h2>{dvd.titolo}</h2>
+                    <span>{dvd.autore}</span>
+                    <p>{dvd.contenuto}</p>
+                    <span>{dvd.categoria}</span>
+                </div>
+            ))
+            }
+        </>
+
+
+
+    )
+}
+
+
+
+export default DisneyForm
